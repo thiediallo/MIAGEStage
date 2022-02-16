@@ -1,0 +1,96 @@
+<div class="bandeauSuperieur d-flex justify-content-center">
+  <span class="mx-4 uppercase font-bold">Etudiants</span>
+</div>
+<div class="d-flex justify-content-end mb-4">
+  <%= link_to new_etudiant_path, remote: true, class: 'btn btn-outline-secondary',
+              data: { "bs-toggle": 'modal', "bs-target": '#newEtudiantModal' } do %>
+    <%= fa_icon "plus", class: "fa-lg me-1" %> Nouvel étudiant
+  <% end %>
+</div>
+<div class="card-body p-2 table-responsive">
+
+  <table class="table table-bordered tableBleu" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+    <tr>
+      <th scope="col">Numéro étudiant</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Formation</th>
+      <th scope="col">Email universitaire</th>
+      <th scope="col">Email personnel</th>
+      <th scope="col">Statut arrivant</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @etudiants.each do |e| %>
+      <tr>
+        <td>
+          <%= e.num_etudiant  %>
+        </td>
+        <td>
+          <%= e.nom  %>
+        </td>
+        <td>
+          <%= e.prenom  %>
+        </td>
+        <td>
+          <% if e.formations.present? %>
+            <%= e.formations.last.libelle %>
+          <% end %>
+        </td>
+        <td>
+          <%= e.email_universitaire  %>
+        </td>
+        <td>
+          <%= e.email_personnel  %>
+        </td>
+        <td>
+          <%= e.statut_arrivant_L3  %>
+        </td>
+        <td class="align-middle text-end">
+          <%= link_to edit_etudiant_path(e), remote: true, class: 'me-2',
+                      data: { "bs-toggle": 'modal', "bs-target": '#editEtudiantModal' } do %>
+            <% fa_icon "edit", class: "fa-2x" %>
+          <% end %>
+
+          <%= link_to etudiant_path(e), method: :delete, class: 'me-2 text-danger',
+                      data: { confirm: "Etes-vous sûr de vouloir supprimer cet étudiant ?" } do %>
+            <% fa_icon "trash", class: "fa-2x" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+
+  <!-- New Etudiant Modal -->
+  <div class="modal fade" id="newEtudiantModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="newEtudiantModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newEtudiantModalLabel">Nouvel étudiant</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body inner-import-new">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Etudiant Modal -->
+  <div class="modal fade" id="editEtudiantModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editEtudiantModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editEtudiantModalLabel">Modifier étudiant</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body inner-import-edit">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

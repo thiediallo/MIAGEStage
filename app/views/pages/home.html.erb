@@ -1,0 +1,45 @@
+<!-- Masthead-->
+<header class="masthead">
+  <div class="container">
+    <div class="masthead-subheading">Bienvenue sur le site des stages de la MIAGE!</div>
+    <div class="masthead-heading text-uppercase">Une plateforme de gestion des stages dediée à tous les acteurs de la filière MIAGE</div>
+
+    <%= link_to 'S\'inscrire', guid_etudiant_sign_up_path, class: 'btn btn-round btn-xl text-uppercase mb-2' %><br>
+    <%= link_to 'Se connecter étudiant', etudiant_session_path, class: 'btn btn-round btn-xl text-uppercase mb-2' %><br>
+    <%= link_to 'Se connecter tuteur universitaire', tuteur_universitaire_session_path, class: 'btn btn-round btn-xl text-uppercase mb-2' %><br>
+    <%= link_to 'Se connecter responsable des stages', responsable_stage_session_path, class: 'btn btn-round btn-xl text-uppercase mb-2' %>
+
+  </div>
+</header>
+<!-- Services-->
+<section class="page-section" id="services">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Les acteurs :</h2>
+      <h3 class="section-subheading text-muted">Une plateforme, divers acteurs.</h3>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <%= fa_icon "graduation-cap", class: "fa-stack-2x text-primary text-dark" %>
+                        </span>
+        <h4 class="">Responsable des stages</h4>
+        <p class="text-muted">Gestion des offres des stages, edition des grilles d'evaluation et de la notation, statiques sur l'evolution des etudiants</p>
+      </div>
+      <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <%= fa_icon "user-circle", class: "fa-stack-2x text-primary text-dark" %>
+                        </span>
+        <h4 class="">Responsables pédagogiques</h4>
+        <p class="text-muted">Suivi des stages, attribution des notes pour les etudiants encadrés et suivi des compétences des etudiants</p>
+      </div>
+      <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <%= fa_icon "user-secret", class: "fa-stack-2x text-primary text-dark" %>
+                        </span>
+        <h4 class="">Etudiants</h4>
+        <p class="text-muted">Consultation des offres de stages et des notes attribuées pour le stage. Dépôt et télechargement des fiches d'évaluation </p>
+      </div>
+    </div>
+  </div>
+</section>
